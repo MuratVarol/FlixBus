@@ -14,5 +14,6 @@ class DeparturesListModule {
 
     @PerActivity
     @Provides
-    internal fun providesDeparturesListPresenter(departuresRepo: DeparturesRepo): DeparturesListPresenter = DeparturesListPresenter(departuresRepo)
+    internal fun providesDeparturesListPresenter(departuresRepo: DeparturesRepo): DeparturesListPresenter =
+            DeparturesListPresenter(departuresRepo)
 }
