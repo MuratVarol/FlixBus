@@ -11,9 +11,9 @@ interface DeparturesListContract {
 
     interface View : BaseContract.View {
 
-        fun showDeparturesList(departuresList: List<Departures>)
+        fun showDeparturesList(departuresList: List<Departures>?)
 
-        fun clearList()
+        fun cleanDeparturesList()
 
         fun showError(errorMessage: String)
 
@@ -25,7 +25,9 @@ interface DeparturesListContract {
 
     interface Presenter {
 
-        fun loadDeparturesList(cleanPreviousList: Boolean)
+        fun loadDeparturesList()
+
+
 
 
     }
