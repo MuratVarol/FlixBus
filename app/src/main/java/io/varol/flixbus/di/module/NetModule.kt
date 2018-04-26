@@ -9,6 +9,7 @@ import dagger.Provides
 import io.varol.flixbus.BuildConfig
 import io.varol.flixbus.data.remote.departures.DeparturesApi
 import io.varol.flixbus.util.network.ConnectivityInterceptor
+import io.varol.flixbus.util.network.HeaderInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -58,6 +59,13 @@ class NetModule {
     }
 
     /**
+     * Provides header.
+     */
+    @Provides
+    @Singleton
+    fun providesHeaderInterceptor(): HeaderInterceptor = HeaderInterceptor()
+
+    /**
      * Provides modified OkHttp Client builder.
      *  logging network requests and responses
      *  Checks if there is no internet connection
@@ -65,11 +73,12 @@ class NetModule {
      */
     @Provides
     @Singleton
-    fun providesOkHttpClient(cache: Cache, context: Application): OkHttpClient {
+    fun providesOkHttpClient(cache: Cache, headerInterceptor: HeaderInterceptor, context: Application): OkHttpClient {
         return OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor()
                         .setLevel(if (BuildConfig.DEBUG) Level.BODY else Level.NONE))
                 .addInterceptor(ConnectivityInterceptor(context.applicationContext))
+                .addInterceptor(headerInterceptor)
                 .connectTimeout(CLIENT_TIME_OUT, TimeUnit.SECONDS)
                 .writeTimeout(CLIENT_TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(CLIENT_TIME_OUT, TimeUnit.SECONDS)
@@ -94,6 +103,7 @@ class NetModule {
     @Provides
     @Singleton
     fun providesDeparturesApi(retrofit: Retrofit): DeparturesApi = DeparturesApi(retrofit)
+
 
 
 }
