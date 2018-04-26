@@ -64,5 +64,7 @@ dependencies {
     debugImplementation deps.leakCanary.debugImplementation
     releaseImplementation deps.leakCanary.releaseImplementation
 
+    implementation deps.multiDex
+
 
 }
