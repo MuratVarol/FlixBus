@@ -9,10 +9,10 @@ import javax.inject.Singleton
  */
 
 @Module
-class RoutesRepoModule {
+class DeparturesRepoModule {
     @Provides
     @Singleton
-    fun providesRoutesApiModule(departuresApi: DeparturesApi): DeparturesRepo {
+    fun providesDeparturesRepo(departuresApi: DeparturesApi): DeparturesRepo {
         return DeparturesRepo(departuresApi)
     }
 
