@@ -35,7 +35,7 @@ interface AppComponent {
 
     fun cache(): Cache
 
-    fun okHttpCliend(): OkHttpClient
+    fun okHttpClient(): OkHttpClient
 
     fun moshi(): Moshi
 
