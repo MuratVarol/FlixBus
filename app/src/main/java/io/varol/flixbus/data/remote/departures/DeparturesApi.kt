@@ -19,7 +19,7 @@ class DeparturesApi : IDeparturesApi {
     //endregion
 
 
-    //region constructer
+    //region constructor
 
     @Inject
     constructor(retrofit: Retrofit) {
