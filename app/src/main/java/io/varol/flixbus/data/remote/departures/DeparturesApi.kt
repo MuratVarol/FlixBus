@@ -1,6 +1,5 @@
 package io.varol.flixbus.data.remote.departures
 
-import io.varol.flixbus.data.models.Departures
 import io.varol.flixbus.data.models.TimeTable
 import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Retrofit
@@ -9,8 +8,8 @@ import javax.inject.Inject
 /**
  * Created by varol on 26.4.2018.
  */
- 
-class DeparturesApi : IDeparturesApi{
+
+class DeparturesApi : IDeparturesApi {
 
     //region variable declaration
 
@@ -35,7 +34,7 @@ class DeparturesApi : IDeparturesApi{
     //region Call methods
 
     override fun fetchDeparturesTimeTable(): Deferred<TimeTable> {
-       return mDeparturesService.fetchDeparturesTimeTable()
+        return mDeparturesService.fetchDeparturesTimeTable()
     }
 
 
