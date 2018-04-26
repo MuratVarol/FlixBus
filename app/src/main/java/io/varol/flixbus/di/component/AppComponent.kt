@@ -5,6 +5,7 @@ import android.content.res.Resources
 import com.squareup.leakcanary.RefWatcher
 import com.squareup.moshi.Moshi
 import dagger.Component
+import io.varol.flixbus.data.remote.departures.DeparturesApi
 import io.varol.flixbus.data.remote.departures.DeparturesRepoModule
 import io.varol.flixbus.di.module.AppModule
 import io.varol.flixbus.di.module.LeakCanaryModule
@@ -41,7 +42,7 @@ interface AppComponent {
 
     fun retrofit(): Retrofit
 
-    fun departuresApi(): DeparturesRepoModule
+    fun departuresApi(): DeparturesApi
 
     fun refWatcher(): RefWatcher
 }
