@@ -9,10 +9,10 @@ import com.squareup.moshi.Json
  data class Departures(
         
         @Json(name = "datetime")
-        val datetime: DateTime,
+        var datetime: DateTime,
 
         @Json(name = "line_code")
-        val line_code: String,
+        var line_code: String,
 
         @Json(name = "direction")
-        val direction: String)
+        var direction: String)

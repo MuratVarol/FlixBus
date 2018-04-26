@@ -8,7 +8,7 @@ import com.squareup.moshi.Json
  
 data class DateTime(
         @Json(name = "timestamp")
-        val timestamp: Long,
+        var timestamp: Long,
 
         @Json(name = "tz")
-        val tz: String)
+        var tz: String)

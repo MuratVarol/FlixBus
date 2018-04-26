@@ -6,4 +6,4 @@ import com.squareup.moshi.Json
  * Created by varol on 26.4.2018.
  */
  
- data class TimeTable(@Json(name = "departures") val departures: ArrayList<Departures>)
+ data class TimeTable(@Json(name = "departures") var departures: List<Departures> = listOf())
