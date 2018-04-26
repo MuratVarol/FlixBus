@@ -1,5 +1,6 @@
 package io.varol.flixbus.data.remote.departures
 
+import io.varol.flixbus.data.models.ServiceResponse
 import io.varol.flixbus.data.models.TimeTable
 import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Retrofit
@@ -33,7 +34,7 @@ class DeparturesApi : IDeparturesApi {
 
     //region Call methods
 
-    override fun fetchDeparturesTimeTable(): Deferred<TimeTable> {
+    override fun fetchDeparturesTimeTable(): Deferred<ServiceResponse> {
         return mDeparturesService.fetchDeparturesTimeTable()
     }
 

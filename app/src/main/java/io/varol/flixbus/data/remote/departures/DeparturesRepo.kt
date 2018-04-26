@@ -1,6 +1,7 @@
 package io.varol.flixbus.data.remote.departures
 
 import io.varol.flixbus.data.models.Departures
+import io.varol.flixbus.data.models.ServiceResponse
 import javax.inject.Inject
 
 /**
@@ -16,8 +17,8 @@ class DeparturesRepo {
         mDeparturesApi = departuresApi
     }
 
-    suspend fun fetchDepartures(): List<Departures> {
-        return mDeparturesApi.fetchDeparturesTimeTable().await().departures
+    suspend fun fetchDepartures(): ServiceResponse {
+        return mDeparturesApi.fetchDeparturesTimeTable().await()
     }
 
 
