@@ -29,6 +29,8 @@ buildscript {
                     'stdlib'    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
 
                     'coroutines': [
+
+                            'anko' : 'org.jetbrains.anko:anko-coroutines:0.10.4',
                             'common' : "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${versions.kotlinCoroutines}",
                             'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}",
                     ],
@@ -41,12 +43,16 @@ buildscript {
 
             'okio'      : "com.squareup.okio:okio:${versions.okio}",
 
-            'okHttp' : [
-                    'common'  : "com.squareup.okhttp3:okhttp:${versions.okio}",
-                    'logging' : "com.squareup.okhttp3:logging-interceptor:${versions.okio}"
+            'okHttp'    : [
+                    'common'  : "com.squareup.okhttp3:okhttp:${versions.okHttpVersion}",
+                    'logging' : "com.squareup.okhttp3:logging-interceptor:${versions.okHttpVersion}"
             ],
 
-            'moshi'     : "com.squareup.moshi:moshi:${versions.moshi}",
+            'moshi'     : [
+                    'common'                 : "com.squareup.moshi:moshi:${versions.moshi}",
+                    'moshiAdapter'           : "com.squareup.moshi:moshi-adapters:${versions.moshi}",
+                    'moshiRetrofitConverter' :  'com.squareup.retrofit2:converter-moshi:2.3.0'
+            ],
 
             'retrofit'  : [
                     'client'                 : "com.squareup.retrofit2:retrofit:${versions.retrofit}",

@@ -28,33 +28,44 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 kotlin {
     experimental {
         coroutines 'enable'
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$versions.supportLibrary"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-
+    implementation "com.android.support:design:$versions.supportLibrary"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    //kotlin
+    //kotlin {common, coroutines}
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.coroutines.common
+    implementation deps.kotlin.coroutines.anko
 
-    // dependency injection - dagger
+    // dependency injection - {dagger}
     implementation deps.dagger.runtime
     kapt deps.dagger.compiler
 
-    //network
+    //network - {okio, moshi, okHttp, Retrofit}
     implementation deps.okio
 
-    implementation deps.moshi
+    implementation deps.moshi.common
+    implementation deps.moshi.moshiAdapter
+    implementation deps.moshi.moshiRetrofitConverter
 
     implementation deps.okHttp.common
     implementation deps.okHttp.logging
@@ -63,10 +74,11 @@ dependencies {
     implementation deps.retrofit.adapterKotlinCoroutines
     implementation deps.retrofit.converterMoshi
 
-    // developer tools - leak canary
+    // developer tools - {leak canary}
     debugImplementation deps.leakCanary.debugImplementation
     releaseImplementation deps.leakCanary.releaseImplementation
 
+    // apllication - {multiDex}
     implementation deps.multiDex
 
 
