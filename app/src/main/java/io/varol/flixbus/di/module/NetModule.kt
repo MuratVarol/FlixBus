@@ -7,6 +7,7 @@ import com.squareup.moshi.Rfc3339DateJsonAdapter
 import dagger.Module
 import dagger.Provides
 import io.varol.flixbus.BuildConfig
+import io.varol.flixbus.data.remote.departures.DeparturesApi
 import io.varol.flixbus.util.network.ConnectivityInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -89,6 +90,10 @@ class NetModule {
                     .addConverterFactory(MoshiConverterFactory.create(providesMoshi()))
                     .addCallAdapterFactory(CoroutineCallAdapterFactory())
                     .build()
+
+    @Provides
+    @Singleton
+    fun providesDeparturesApi(retrofit: Retrofit): DeparturesApi = DeparturesApi(retrofit)
 
 
 }
