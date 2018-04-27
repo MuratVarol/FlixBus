@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="DirectionTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorGray800</item>
+    </style>
+
+    <style name="LineCodeTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorGray600</item>
+    </style>
+
+    <style name="StationTimeTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorGray800</item>
+    </style>
+
 </resources>
