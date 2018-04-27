@@ -2,7 +2,9 @@ package io.varol.flixbus.ui
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -51,10 +53,27 @@ class DeparturesListActivity : BaseActivity(), DeparturesListContract.View {
 
     override fun initView() {
 
+        // remove application name from toolbar
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         departuresAdapter = CommonAdapter()
 
-        rv_departures_items?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_departures_items?.adapter = departuresAdapter
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_departures_items)
+        val recyclerViewLayoutManager = LinearLayoutManager(this)
+
+        with(recyclerView)
+        {
+            layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            adapter = departuresAdapter
+
+            if (recyclerViewLayoutManager != null) {
+                val dividerItemDecoration = DividerItemDecoration(recyclerView.context,
+                        recyclerViewLayoutManager.orientation)
+                addItemDecoration(dividerItemDecoration)
+            }
+        }
+
+
 
         departuresAdapter.setOnDepartureItemClickListener(object : CommonAdapter.OnDepartureItemClickListener {
             override fun onItemClick(position: Int) {
@@ -93,11 +112,11 @@ class DeparturesListActivity : BaseActivity(), DeparturesListContract.View {
     }
 
     override fun showError(errorMessage: String) {
-        Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT)
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }
 
     override fun showNoInternetSnack() {
-        Snackbar.make(rl_departures_layout,R.string.no_internet_connection,Snackbar.LENGTH_SHORT)
+        Snackbar.make(window.decorView.rootView, R.string.no_internet_connection, Snackbar.LENGTH_LONG).show()
     }
 
     override fun showEmptyResult() {
