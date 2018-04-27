@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
+    <string name="app_name">FlixBus</string>
+    <string name="no_internet_connection">Keine Internetverbindung!</string>
+    <string name="unexpected_error">Unerwarteter Fehler!</string>
 </resources>
