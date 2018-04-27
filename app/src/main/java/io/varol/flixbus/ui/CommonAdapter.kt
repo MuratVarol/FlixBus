@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import io.varol.flixbus.R
 import io.varol.flixbus.data.models.Departures
+import io.varol.flixbus.util.common.toStationTime
 import kotlinx.android.synthetic.main.layout_timetable_item.view.*
 
 /**
@@ -91,7 +92,9 @@ class CommonAdapter<T> : RecyclerView.Adapter<CommonAdapter.ViewHolder>() {
 
                 itemView.tv_direction.text = item.direction
                 itemView.tv_line_code.text = item.line_code
-                itemView.tv_time.text = item.datetime.timestamp.toString()
+                itemView.tv_time.text = item.datetime.toStationTime()
+
+
             } catch (e: Exception) {
                 return
             }
